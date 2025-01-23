@@ -28,61 +28,46 @@ section header button {
 section header button:hover {
   background-color: #3d78d3;
 }
-.table_component {
-  padding: 1rem 2rem;
-  overflow: auto;
-  width: 100%;
+.container_cards_employees {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
-.table_component table {
-  border: 1px solid #dededf;
-  height: 100%;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border-spacing: 1px;
-  text-align: left;
+.employer_card {
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 1.5rem;
 }
-
-.table_component caption {
-  caption-side: top;
-  text-align: left;
-}
-
-.table_component th {
-  border: 1px solid #dededf;
-  background-color: #0099ff;
-  color: #ffffff;
-  padding: 5px;
-}
-.table_component th:last-child {
-  width: 5%;
-}
-
-.table_component tr:nth-child(odd) td {
-  background-color: rgb(236, 236, 236);
-}
-.table_component tr:nth-child(even) td {
-  background-color: white;
-}
-
-.table_component td {
-  border: 1px solid #dededf;
-  background-color: #ffffff;
-  color: #000000;
-  padding: 5px;
-}
-.table_component td:last-child {
+.employer_card header {
+  padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  gap: 1rem;
 }
-.table_component td button {
+.employer_card header img {
+  border: 1px solid red;
+  width: 36px;
+  height: 36px;
+}
+.employer_card header .employer_details {
   display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
+  flex-direction: column;
 }
-.table_component td button:hover {
-  fill: dodgerblue;
+.employer_card header .employer_details span:nth-child(1) {
+  font-weight: 600;
+}
+.employer_card header .employer_details span:nth-child(2) {
+  color: gray;
+  font-size: 0.8rem;
+}
+.employer_card main .employer_department_details {
+  display: flex;
+  flex-direction: column;
+}
+.employer_card main .employer_department_details span:nth-child(2) {
+  background-color: green;
+  width: fit-content;
 }
 .add_new_employer_form {
   visibility: hidden;
