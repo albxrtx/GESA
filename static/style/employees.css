@@ -28,16 +28,24 @@ section header button {
 section header button:hover {
   background-color: #3d78d3;
 }
+section main {
+  height: 85%;
+  overflow-y: scroll;
+}
 .container_cards_employees {
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .employer_card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid gray;
   border-radius: 1rem;
   padding: 1.5rem;
+  gap: 1rem;
+  grid-column: span 1 !important;
 }
 .employer_card header {
   padding: 0;
@@ -56,18 +64,46 @@ section header button:hover {
 }
 .employer_card header .employer_details span:nth-child(1) {
   font-weight: 600;
+  font-size: 1.1rem;
 }
 .employer_card header .employer_details span:nth-child(2) {
   color: gray;
   font-size: 0.8rem;
 }
+.employer_card main {
+  overflow: hidden;
+}
 .employer_card main .employer_department_details {
   display: flex;
   flex-direction: column;
+  font-size: 0.8rem;
+  color: gray;
 }
 .employer_card main .employer_department_details span:nth-child(2) {
-  background-color: green;
+  background-color: rgba(30, 143, 255, 0.511);
   width: fit-content;
+  color: black;
+  font-size: 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+}
+.employer_card main {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.employer_card main button {
+  border: 1px solid black;
+  height: 70%;
+  width: fit-content;
+  padding: 0.1rem 1.4rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+.employer_card main button:hover {
+  border: 1px solid #4e46ff;
+  background-color: #dbdbdb;
+  color: #4e46ff;
 }
 .add_new_employer_form {
   visibility: hidden;
