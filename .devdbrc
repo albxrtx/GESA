@@ -1,0 +1,10 @@
+[
+  {
+    "type": "sqlite",
+    "path": "instance/app.db"
+  },
+  {
+    "type": "sqlite",
+    "path": "c:\\Users\\Alberto\\Documents\\VSCODE\\PYTHON\\GESA\\instance\\app.db"
+  }
+]

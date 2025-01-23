@@ -1,0 +1,147 @@
+{% extends "base.html" %} {% block title %}Inventario{% endblock %}{% block
+content %} {% include "sidebar.html" %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename = 'style/inventory.css')}}"
+/>
+<section>
+  <header>
+    <h1>Inventario</h1>
+    <button id="btn_add_new_product">Añadir producto</button>
+  </header>
+  <main>
+    <div class="table_component">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Proveedor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.stock}} /uds</td>
+            <td>{{ item.supplier }}</td>
+            <td>
+              <form
+                action="{{ url_for('delete_item', item_id=item.id) }}"
+                method="post"
+              >
+                <button type="submit" class="btn-delete">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1"
+                    id="Capa_1"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 512 512"
+                    style="enable-background: new 0 0 512 512"
+                    xml:space="preserve"
+                    width="24"
+                    height="24"
+                  >
+                    <g>
+                      <path
+                        d="M490.667,96c0-17.673-14.327-32-32-32h-80.555C364.632,25.757,328.549,0.13,288,0h-64   c-40.549,0.13-76.632,25.757-90.112,64H53.333c-17.673,0-32,14.327-32,32l0,0c0,17.673,14.327,32,32,32H64v266.667   C64,459.468,116.532,512,181.333,512h149.333C395.468,512,448,459.468,448,394.667V128h10.667   C476.34,128,490.667,113.673,490.667,96z M384,394.667C384,424.122,360.122,448,330.667,448H181.333   C151.878,448,128,424.122,128,394.667V128h256V394.667z"
+                      />
+                      <path
+                        d="M202.667,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C170.667,369.673,184.994,384,202.667,384z"
+                      />
+                      <path
+                        d="M309.333,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C277.333,369.673,291.66,384,309.333,384z"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <div class="add_new_product_form">
+    <form method="post" action="/add-item" class="form">
+      <h1>Añadir nuevo producto</h1>
+      <div>
+        <label for="">ID</label>
+        <input
+          type="number"
+          placeholder="ID del producto"
+          name="id"
+          min="1"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Nombre</label>
+        <input
+          type="text"
+          placeholder="Nombre del producto"
+          name="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Cantidad</label>
+        <input
+          type="number"
+          placeholder="Cantidad del producto"
+          name="stock"
+          min="0"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Proveedor</label>
+        <input
+          type="text"
+          placeholder="Dirección del proveedor"
+          name="supplier"
+          required
+        />
+      </div>
+      <div class="container_buttons">
+        <input
+          id="btn_add"
+          onclick="showToast()"
+          type="submit"
+          value="Añadir"
+        />
+        <input id="btn_cancel" type="reset" value="Cancelar" />
+      </div>
+    </form>
+  </div>
+  <div id="toast">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      id="Capa_1"
+      x="0px"
+      y="0px"
+      viewBox="0 0 507.506 507.506"
+      style="enable-background: new 0 0 507.506 507.506"
+      xml:space="preserve"
+      width="22"
+      height="22"
+    >
+      <g>
+        <path
+          d="M163.865,436.934c-14.406,0.006-28.222-5.72-38.4-15.915L9.369,304.966c-12.492-12.496-12.492-32.752,0-45.248l0,0   c12.496-12.492,32.752-12.492,45.248,0l109.248,109.248L452.889,79.942c12.496-12.492,32.752-12.492,45.248,0l0,0   c12.492,12.496,12.492,32.752,0,45.248L202.265,421.019C192.087,431.214,178.271,436.94,163.865,436.934z"
+        />
+      </g>
+    </svg>
+    Nuevo producto añadido
+  </div>
+</section>
+<script src="{{url_for('static', filename = 'js/inventory.js')}}"></script>
+{% endblock %}

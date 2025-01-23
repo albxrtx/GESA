@@ -1,0 +1,83 @@
+img {
+  width: 600px;
+  height: 600px;
+  margin-left: 15%;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+a {
+  color: #5293df;
+  text-decoration: none;
+}
+a:hover {
+  color: #3d78d3;
+  text-decoration: underline;
+}
+.container_login {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #dfedfa;
+  width: 35%;
+  height: 100svh;
+  gap: 10px;
+}
+.container_login form a {
+  font-size: 0.9rem;
+}
+.container_login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+}
+.container_login form .container_inputs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.container_login form .container_inputs p {
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  color: red;
+}
+.container_login form .container_inputs svg {
+  transition: 0.2s ease;
+  border-radius: 100%;
+  padding: 0.4rem;
+  position: absolute;
+  right: 9px;
+  top: 30px;
+}
+.container_login form .container_inputs svg:hover {
+  background-color: gainsboro;
+}
+.container_login form input {
+  outline: none;
+  border-radius: 0.5rem;
+  border: 1px solid gainsboro;
+  padding: 10px 15px;
+}
+.container_login form input[type="submit"] {
+  font-size: 1.1rem;
+  background-color: #5293df;
+  color: white;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.container_login form input[type="submit"]:hover {
+  background-color: #3d78d3;
+  transition: 0.2s ease;
+}
+.check_password {
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: red;
+  display: none;
+}

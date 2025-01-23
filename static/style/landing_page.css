@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ul,
+li {
+  list-style: none;
+}
+header {
+  height: 100px;
+  border-bottom: 1px solid #dfedfa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 150px;
+}
+header #logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+nav {
+  display: flex;
+  gap: 20px;
+  font-weight: 600;
+}
+nav a:first-child {
+  color: #fefefe;
+  background-color: #5293df;
+  padding: 10px 15px;
+  border: 2px solid #5293df;
+  border-radius: 5px;
+  transition: 0.1s ease;
+}
+nav a:first-child:hover {
+  background-color: transparent;
+  color: #5293df;
+}
+nav a:last-child {
+  color: #5293df;
+  background-color: transparent;
+  padding: 10px 15px;
+  border: 2px solid #5293df;
+  border-radius: 5px;
+  transition: 0.1s ease;
+}
+nav a:last-child:hover {
+  background-color: #5293df;
+  color: #fefefe;
+}
+main {
+  padding: 50px 150px;
+}
+main .hero {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+main .hero img {
+  width: 35%;
+}
+main .hero .hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+main .hero .hero-content h1 {
+  font-size: 4rem;
+}
+main .hero .hero-content h1 span {
+  background: -webkit-linear-gradient(dodgerblue, rgb(5, 40, 75));
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main .hero .hero-content p {
+  width: 60%;
+  font-size: 1.3rem;
+}
+main .hero .hero-content a {
+  background-color: dodgerblue;
+  width: fit-content;
+  padding: 10px 15px;
+  color: #fefefe;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: 0.1s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+main .hero .hero-content a:hover {
+  background-color: #3d78d3;
+}
+footer {
+  padding: 50px 150px;
+  background-color: #3464c1;
+  color: #fefefe;
+  display: flex;
+  gap: 25px;
+}
+footer ul {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+footer ul p {
+  width: 75%;
+}
+footer ul .social {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+footer ul .social a svg {
+  width: 28px;
+  height: 28px;
+}
+footer ul .social a svg:hover {
+  scale: 1.2;
+}
+footer a {
+  color: #fefefe;
+}
+footer a:hover {
+  text-decoration: underline;
+}
