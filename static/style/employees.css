@@ -41,7 +41,7 @@ section main {
 .employer_card {
   display: flex;
   flex-direction: column;
-  border: 1px solid gray;
+  border: 1px solid gainsboro;
   border-radius: 1rem;
   padding: 1.5rem;
   gap: 1rem;

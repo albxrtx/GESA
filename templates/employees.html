@@ -23,7 +23,12 @@ content %} {% include "sidebar.html" %}
         <main>
           <div class="employer_department_details">
             <span>Departamento: </span>
-            <span>{{employer.department}}</span>
+            {% if departments.name == employer.department %}
+            <span
+              style="color: {{departments.color}}; background-color: {{departments.color}}10;"
+              >{{employer.department}}</span
+            >
+            {% endif %}
           </div>
           <button>Contactar</button>
         </main>
@@ -55,12 +60,13 @@ content %} {% include "sidebar.html" %}
       </div>
       <div>
         <label for="">Departamento del empleado</label>
-        <input
-          type="text"
-          name="department"
-          placeholder="Departemento del empleado"
-          required
-        />
+
+        <select name="department" id="" required>
+          <option value="" selected disabled hidden>Escoge una opción</option>
+          {% for department in departments %}
+          <option value="{{department.name}}">{{department.name}}</option>
+          {% endfor %}
+        </select>
       </div>
       <div>
         <label for="">Contacto del empleado</label>

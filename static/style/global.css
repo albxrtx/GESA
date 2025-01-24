@@ -4,6 +4,8 @@
   --primary-font: #060606;
   --primary-font-hover: #4e46ff;
   --hover-bg: #dbdbdb;
+
+  /* color-scheme: light dark; */
 }
 * {
   padding: 0;
@@ -13,7 +15,7 @@
 }
 body {
   max-height: 100vh;
-  background-color: var(--bg-color);
+  /* background-color: light-dark(#fefefe, #060606); */
 }
 .sidebar {
   color: var(--primary-font);

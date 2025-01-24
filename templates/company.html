@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block title %}Empresa{% endblock %}{% block content
+%} {% include "sidebar.html" %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename = 'style/company.css')}}"
+/>
+<section>
+  <form method="post" action="/modify-company" id="form_company">
+    <header>
+      <h1>Empresa</h1>
+      <input type="submit" value="Guardar" />
+    </header>
+    <div>
+      <label for="">Nombre empresa:</label>
+      <input type="text" required placeholder="Nombre de la empresa" />
+    </div>
+    <div>
+      <label for="">Localización</label>
+      <input type="text" required placeholder="Localización de la empresa" />
+    </div>
+    <div>
+      <label for="">Contacto</label>
+      <input type="text" required placeholder="Contacto de la empresa" />
+    </div>
+  </form>
+  <form method="post" action="/add-department" id="form_departments">
+    <label for="">Añadir departamentos:</label>
+    <div>
+      <input
+        type="text"
+        name="name_department"
+        placeholder="Nombre del departamento"
+        required
+      />
+      <input type="color" name="color_department" id="" value="#b6b6b6" />
+      <input type="submit" value="Añadir departamento" />
+    </div>
+    <div class="container_departments">
+      {% for department in departments %}
+      <span
+        style="color: {{department.color}}; background-color: {{department.color}}10;"
+        >{{department.name}}</span
+      >
+      {% endfor %}
+    </div>
+  </form>
+</section>
+<script src="{{url_for('static', filename = 'js/company.js')}}"></script>
+{% endblock %}

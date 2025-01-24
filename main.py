@@ -66,6 +66,16 @@ class Employees(db.Model):
         return f"<Employer {self.id} - {self.name}>"
 
 
+class Departments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    color = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<Department {self.id} - {self.name}>"
+
+
 with app.app_context():
     db.create_all()
 
@@ -75,7 +85,7 @@ def home():
     if "user_name" not in session:
         return redirect(url_for("landing_page"))
 
-    return render_template("inventory.html", name=session["user_name"])
+    return render_template("company.html", name=session["user_name"])
 
 
 @app.route("/landing_page")
@@ -132,10 +142,39 @@ def logout():
     return redirect(url_for("landing_page"))
 
 
-@app.route("/inventory")
-def inventory():
+@app.route("/company")
+def company():
+    departments = Departments.query.all()
     if "user_name" not in session:
         return redirect(url_for("login"))
+    return render_template(
+        "company.html", name=session["user_name"], departments=departments
+    )
+
+
+@app.route("/add-department", methods=["GET", "POST"])
+def add_department():
+    departments = Departments.query.all()
+    if request.method == "POST":
+
+        name = request.form["name_department"]
+        color = request.form["color_department"]
+        new_department = Departments(name=name, color=color)
+
+        try:
+            db.session.add(new_department)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            print("ERROR")
+            return redirect(url_for("company"))
+
+        return redirect(url_for("company"))
+    return render_template("company.html", departments=departments)
+
+
+@app.route("/inventory")
+def inventory():
     items = Items.query.all()
     return render_template("inventory.html", name=session["user_name"], items=items)
 
@@ -215,9 +254,13 @@ def delete_sale(sale_id):
 
 @app.route("/employees")
 def employees():
+    departments = Departments.query.all()
     employees = Employees.query.all()
     return render_template(
-        "employees.html", name=session["user_name"], employees=employees
+        "employees.html",
+        name=session["user_name"],
+        employees=employees,
+        departments=departments,
     )
 
 
