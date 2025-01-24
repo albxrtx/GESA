@@ -1,11 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-  --bg-color: #f7f7f7;
-  --primary-font: #060606;
-  --primary-font-hover: #4e46ff;
-  --hover-bg: #dbdbdb;
-
-  /* color-scheme: light dark; */
+  --primary-font-hover: dodgerblue;
+  color-scheme: light dark;
 }
 * {
   padding: 0;
@@ -15,14 +11,14 @@
 }
 body {
   max-height: 100vh;
-  /* background-color: light-dark(#fefefe, #060606); */
+  background-color: light-dark(#ededed, #121212);
 }
 .sidebar {
-  color: var(--primary-font);
+  color: light-dark(#060606, #fefefe);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #ededed;
+  background-color: light-dark(#f7f7f7, #282828);
   border-radius: 1rem;
   width: fit-content;
   width: 250px;
@@ -50,8 +46,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.7rem;
-  background-color: #ededed;
-  border: 1px solid gray;
+  background-color: light-dark(#fefefe, #282828);
   padding: 1rem;
   width: 250px;
   border-radius: 1rem;
@@ -91,7 +86,7 @@ body {
   font-weight: 400;
 }
 .sidebar svg {
-  fill: var(--primary-font);
+  fill: light-dark(#060606, #fefefe);
 }
 .sidebar a {
   text-decoration: none;
@@ -102,11 +97,11 @@ body {
   width: 100%;
   height: fit-content;
   border-radius: 1rem;
-  color: var(--primary-font);
+  color: light-dark(#060606, #fefefe);
 }
 .sidebar a:hover {
   color: var(--primary-font-hover);
-  background-color: var(--hover-bg);
+  background-color: light-dark(#ededed, #3f3f3f);
   svg {
     fill: var(--primary-font-hover);
   }

@@ -23,12 +23,13 @@ content %} {% include "sidebar.html" %}
         <main>
           <div class="employer_department_details">
             <span>Departamento: </span>
-            {% if departments.name == employer.department %}
+            {% for department in departments %} {% if employer.department ==
+            department.name%}
             <span
-              style="color: {{departments.color}}; background-color: {{departments.color}}10;"
+              style="color: {{department.color}}; background-color: {{department.color}}10;"
               >{{employer.department}}</span
             >
-            {% endif %}
+            {% endif %} {% endfor %}
           </div>
           <button>Contactar</button>
         </main>

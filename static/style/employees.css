@@ -1,3 +1,9 @@
+* {
+  color-scheme: light dark;
+}
+::placeholder {
+  color: light-dark(#adadad, #c8c8c8);
+}
 body {
   display: flex;
   height: 100svh;
@@ -6,7 +12,8 @@ section {
   padding: 0.5rem;
   border-radius: 1rem;
   width: 99%;
-  background-color: #ededed;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   margin: 1%;
 }
 section header {
@@ -41,7 +48,8 @@ section main {
 .employer_card {
   display: flex;
   flex-direction: column;
-  border: 1px solid gainsboro;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   border-radius: 1rem;
   padding: 1.5rem;
   gap: 1rem;
@@ -82,7 +90,7 @@ section main {
 .employer_card main .employer_department_details span:nth-child(2) {
   background-color: rgba(30, 143, 255, 0.511);
   width: fit-content;
-  color: black;
+  color: light-dark(#060606, #fefefe);
   font-size: 1rem;
   padding: 0.3rem 1rem;
   border-radius: 1rem;
@@ -93,7 +101,8 @@ section main {
   align-items: end;
 }
 .employer_card main button {
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
   height: 70%;
   width: fit-content;
   padding: 0.1rem 1.4rem;
@@ -101,9 +110,8 @@ section main {
   font-weight: 600;
 }
 .employer_card main button:hover {
-  border: 1px solid #4e46ff;
-  background-color: #dbdbdb;
-  color: #4e46ff;
+  background-color: light-dark(#dbdbdb, #3f3f3f);
+  color: dodgerblue;
 }
 .add_new_employer_form {
   visibility: hidden;

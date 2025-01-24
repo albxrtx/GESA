@@ -1,3 +1,9 @@
+* {
+  color-scheme: light dark;
+}
+::placeholder {
+  color: light-dark(#adadad, #c8c8c8);
+}
 body {
   display: flex;
   height: 100svh;
@@ -6,7 +12,8 @@ section {
   padding: 0.5rem;
   border-radius: 1rem;
   width: 99%;
-  background-color: #ededed;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   margin: 1%;
 }
 section header {
@@ -32,9 +39,13 @@ section header button:hover {
   padding: 1rem 2rem;
   overflow: auto;
   width: 100%;
+  overflow-y: scroll;
+  max-height: 550px;
+  scrollbar-color: light-dark(#f7f7f7, #282828);
 }
 .table_component table {
-  border: 1px solid #dededf;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
   height: 100%;
   width: 100%;
   table-layout: fixed;
@@ -49,7 +60,8 @@ section header button:hover {
 }
 
 .table_component th {
-  border: 1px solid #dededf;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
   background-color: #0099ff;
   color: #ffffff;
   padding: 5px;
@@ -59,21 +71,22 @@ section header button:hover {
 }
 
 .table_component tr:nth-child(odd) td {
-  background-color: rgb(236, 236, 236);
+  background-color: light-dark(#dbdbdb, #121212);
 }
 .table_component tr:nth-child(even) td {
-  background-color: white;
+  background-color: light-dark(#f7f7f7, #282828);
 }
 
 .table_component td {
-  border: 1px solid #dededf;
-  background-color: #ffffff;
-  color: #000000;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
+  color: light-dark(#060606, #fefefe);
   padding: 5px;
 }
 .table_component td:last-child {
   display: flex;
   justify-content: center;
+  fill: light-dark(#060606, #fefefe);
 }
 .table_component td button {
   display: flex;
@@ -104,7 +117,8 @@ section header button:hover {
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   flex-direction: column;
-  background-color: white;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   width: 50%;
   height: 70%;
   padding: 2rem;
@@ -127,17 +141,21 @@ div:nth-child(5) {
   color: gray;
 }
 .add_new_sale_form .form input {
-  color: black;
+  color: light-dark(#060606, #fefefe);
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
   padding: 10px 15px;
 }
 .add_new_sale_form .form select {
-  color: black;
+  color: light-dark(#060606, #fefefe);
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
   padding: 10px 15px;
 }
 .add_new_sale_form .form .container_buttons {

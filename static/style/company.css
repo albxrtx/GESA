@@ -1,3 +1,9 @@
+* {
+  color-scheme: light dark;
+}
+::placeholder {
+  color: light-dark(#adadad, #c8c8c8);
+}
 body {
   display: flex;
   height: 100svh;
@@ -6,7 +12,8 @@ section {
   padding: 0.5rem;
   border-radius: 1rem;
   width: 99%;
-  background-color: #ededed;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   margin: 1%;
 }
 section header {
@@ -41,8 +48,10 @@ section #form_company header {
 section input {
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
   padding: 10px 15px;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
 }
 section #form_company div {
   display: flex;

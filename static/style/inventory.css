@@ -1,3 +1,9 @@
+* {
+  color-scheme: light dark;
+}
+::placeholder {
+  color: light-dark(#adadad, #c8c8c8);
+}
 body {
   display: flex;
   height: 100svh;
@@ -6,7 +12,8 @@ section {
   padding: 0.5rem;
   border-radius: 1rem;
   width: 99%;
-  background-color: #ededed;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   margin: 1%;
 }
 section header {
@@ -34,10 +41,11 @@ section header button:hover {
   width: 100%;
   overflow-y: scroll;
   max-height: 550px;
-  scrollbar-color: #fefefe gainsboro;
+  scrollbar-color: light-dark(#f7f7f7, #282828);
 }
 .table_component table {
-  border: 1px solid #dededf;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -51,7 +59,8 @@ section header button:hover {
 }
 
 .table_component th {
-  border: 1px solid #dededf;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
   background-color: #0099ff;
   color: #ffffff;
   padding: 5px;
@@ -60,21 +69,22 @@ section header button:hover {
   width: 5%;
 }
 .table_component tr:nth-child(odd) td {
-  background-color: rgb(236, 236, 236);
+  background-color: light-dark(#dbdbdb, #121212);
 }
 .table_component tr:nth-child(even) td {
-  background-color: white;
+  background-color: light-dark(#f7f7f7, #282828);
 }
 
 .table_component td {
-  border: 1px solid #dededf;
-  background-color: #ffffff;
-  color: #000000;
+  border: 1px solid;
+  border-color: light-dark(#f7f7f7, #282828);
+  color: light-dark(#060606, #fefefe);
   padding: 5px;
 }
 .table_component td:last-child {
   display: flex;
   justify-content: center;
+  fill: light-dark(#060606, #fefefe);
 }
 .table_component td button {
   display: flex;
@@ -105,7 +115,8 @@ section header button:hover {
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   flex-direction: column;
-  background-color: white;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   width: 50%;
   height: 70%;
   padding: 2rem;
@@ -127,8 +138,10 @@ div:nth-child(5) {
 .add_new_product_form .form input {
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
   padding: 10px 15px;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
 }
 .add_new_product_form .form .container_buttons {
   display: flex;
@@ -159,48 +172,4 @@ div:nth-child(5) {
   transition: 0.1s ease;
   font-weight: 600;
   font-size: 1rem;
-}
-section #toast {
-  visibility: hidden;
-  position: fixed;
-  bottom: 30px;
-  right: 40%;
-  display: flex;
-  gap: 1rem;
-  color: dodgerblue;
-  background-color: rgba(69, 153, 236, 0.247);
-  width: fit-content;
-  padding: 15px 20px;
-  border-radius: 1rem;
-  z-index: 100;
-  svg {
-    fill: dodgerblue;
-  }
-}
-section #toast.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
 }
