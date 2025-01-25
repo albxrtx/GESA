@@ -89,10 +89,22 @@ section #form_departments div input:nth-child(3) {
 section #form_departments div input:nth-child(3):hover {
   background-color: #3d79d3;
 }
-section #form_departments .container_departments {
-  margin: 1rem;
+section .container_departments {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 2rem;
 }
-section #form_departments .container_departments span {
+section .container_departments span {
   padding: 5px 10px;
-  border-radius: 1.5rem 1rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+section .container_departments span button {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }

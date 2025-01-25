@@ -133,7 +133,8 @@ section main {
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   flex-direction: column;
-  background-color: white;
+  color: light-dark(#060606, #fefefe);
+  background-color: light-dark(#f7f7f7, #282828);
   width: 50%;
   height: 70%;
   padding: 2rem;
@@ -156,17 +157,19 @@ div:nth-child(5) {
   color: gray;
 }
 .add_new_employer_form .form input {
-  color: black;
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
   padding: 10px 15px;
 }
 .add_new_employer_form .form select {
-  color: black;
+  color: light-dark(#060606, #fefefe);
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
   padding: 10px 15px;
 }
 .add_new_employer_form .form .container_buttons {

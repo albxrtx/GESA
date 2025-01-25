@@ -104,7 +104,7 @@ def login():
         if user and user.password == password:
             session["user_name"] = user.name
             session["email"] = user.email
-            return redirect(url_for("inventory"))
+            return redirect(url_for("company"))
         elif user:
             error = "Correo electrónico o contraseña no coinciden"
             return render_template("login.html", error=error)
@@ -131,7 +131,7 @@ def register():
             return "El correo ya está registrado."
 
         session["user_name"] = new_user.name
-        return redirect(url_for("inventory"))
+        return redirect(url_for("company"))
 
     return render_template("register.html")
 
@@ -166,11 +166,18 @@ def add_department():
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
-            print("ERROR")
             return redirect(url_for("company"))
 
         return redirect(url_for("company"))
     return render_template("company.html", departments=departments)
+
+
+@app.route("/department-item/<int:department_id>", methods=["POST"])
+def delete_department(department_id):
+    department = Departments.query.get_or_404(department_id)
+    db.session.delete(department)
+    db.session.commit()
+    return redirect(url_for("company"))
 
 
 @app.route("/inventory")
