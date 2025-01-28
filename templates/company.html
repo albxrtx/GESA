@@ -8,20 +8,41 @@
 <section>
   <form method="post" action="/modify-company" id="form_company">
     <header>
-      <h1>Empresa</h1>
+      <h1>
+        {% if company and company.name %} {{ company.name }} {% else %} Nombre
+        empresa {% endif %}
+      </h1>
       <input type="submit" value="Guardar" />
     </header>
     <div>
       <label for="">Nombre empresa:</label>
-      <input type="text" required placeholder="Nombre de la empresa" />
+      <input
+        type="text"
+        name="name"
+        required
+        value="{{company.name}}"
+        placeholder="Nombre de la empresa"
+      />
     </div>
     <div>
       <label for="">Localización</label>
-      <input type="text" required placeholder="Localización de la empresa" />
+      <input
+        type="text"
+        name="location"
+        required
+        value="{{company.location}}"
+        placeholder="Localización de la empresa"
+      />
     </div>
     <div>
       <label for="">Contacto</label>
-      <input type="text" required placeholder="Contacto de la empresa" />
+      <input
+        type="text"
+        name="contact"
+        required
+        value="{{company.contact}}"
+        placeholder="Contacto de la empresa"
+      />
     </div>
   </form>
   <form method="post" action="/add-department" id="form_departments">
@@ -46,7 +67,7 @@
         action="{{ url_for('delete_department', department_id=department.id) }}"
         method="post"
       >
-        <button type="submit">
+        <button type="submit" class="btn-delete">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Outline"

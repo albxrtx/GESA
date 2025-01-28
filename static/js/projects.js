@@ -1,5 +1,5 @@
-const form = document.querySelector(".add_new_employer_form");
-const btnAdd = document.getElementById("btn_add_new_employer");
+const form = document.querySelector(".add_new_project_form");
+const btnAdd = document.getElementById("btn_add_new_project");
 const btnCancel = document.getElementById("btn_cancel");
 btnAdd.addEventListener("click", () => {
   form.style.visibility = "visible";
@@ -18,9 +18,8 @@ deleteBtn.addEventListener("click", (event) => {
     event.preventDefault();
   }
 });
-
 function showDeleteForm(button) {
-  const form = button.closest(".employer_card").querySelector(".delete_form");
+  const form = button.closest("details").querySelector(".delete_form");
 
   if (form.style.visibility === "hidden" || form.style.visibility === "") {
     form.style.visibility = "visible";

@@ -51,9 +51,6 @@ body {
   width: 250px;
   border-radius: 1rem;
   overflow: hidden;
-  -webkit-box-shadow: 10px 10px 62px 0px rgba(176, 176, 176, 1);
-  -moz-box-shadow: 10px 10px 62px 0px rgba(176, 176, 176, 1);
-  box-shadow: 10px 10px 62px 0px rgba(176, 176, 176, 1);
 }
 .details_account img {
   width: 40px;

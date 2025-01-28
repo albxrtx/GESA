@@ -22,10 +22,22 @@ class Users(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
+    image = db.Column(db.String(100))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
         return f"<User {self.id} - {self.name}>"
+
+
+class Company(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    location = db.Column(db.String(100))
+    contact = db.Column(db.String(100))
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<Company {self.id} - {self.name}>"
 
 
 class Items(db.Model):
@@ -76,6 +88,18 @@ class Departments(db.Model):
         return f"<Department {self.id} - {self.name}>"
 
 
+class Projects(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(100), nullable=False)
+    department = db.Column(db.String(100), nullable=False)
+    date = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<Project {self.id} - {self.name}>"
+
+
 with app.app_context():
     db.create_all()
 
@@ -84,8 +108,8 @@ with app.app_context():
 def home():
     if "user_name" not in session:
         return redirect(url_for("landing_page"))
-
-    return render_template("company.html", name=session["user_name"])
+    else:
+        return redirect(url_for("company"))
 
 
 @app.route("/landing_page")
@@ -139,17 +163,46 @@ def register():
 @app.route("/logout")
 def logout():
     session.pop("user_name", None)
+    session.pop("email", None)
     return redirect(url_for("landing_page"))
 
 
 @app.route("/company")
 def company():
+    company = Company.query.first()
     departments = Departments.query.all()
     if "user_name" not in session:
         return redirect(url_for("login"))
     return render_template(
-        "company.html", name=session["user_name"], departments=departments
+        "company.html",
+        name=session["user_name"],
+        company=company,
+        departments=departments,
     )
+
+
+@app.route("/modify-company", methods=["GET", "POST"])
+def modify_company():
+    if request.method == "POST":
+        name = request.form.get("name")
+        location = request.form.get("location")
+        contact = request.form.get("contact")
+
+        company = Company.query.first()
+        if not company:
+            company = Company(name=name, location=location, contact=contact)
+            db.session.add(company)
+        else:
+            company.name = name
+            company.location = location
+            company.contact = contact
+
+        db.session.commit()
+
+        return redirect(url_for("company"))
+
+    company = Company.query.first()
+    return render_template("modify_company.html", company=company)
 
 
 @app.route("/add-department", methods=["GET", "POST"])
@@ -273,8 +326,8 @@ def employees():
 
 @app.route("/add-employer", methods=["GET", "POST"])
 def add_employer():
+    employees = Employees.query.all()
     if request.method == "POST":
-        employees = Employees.query.all()
         id = request.form["id"]
         name = request.form["name"]
         department = request.form["department"]
@@ -301,6 +354,60 @@ def delete_employer(employer_id):
     db.session.delete(employer)
     db.session.commit()
     return redirect(url_for("employees"))
+
+
+@app.route("/projects")
+def projects():
+    projects = Projects.query.all()
+    employees = Employees.query.all()
+    departments = Departments.query.all()
+    return render_template(
+        "projects.html",
+        name=session["user_name"],
+        projects=projects,
+        employees=employees,
+        departments=departments,
+    )
+
+
+@app.route("/add-project", methods=["GET", "POST"])
+def add_projects():
+    projects = Projects.query.all()
+    employees = Employees.query.all()
+    departments = Departments.query.all()
+    if request.method == "POST":
+        name = request.form["name"]
+        date = request.form["date"]
+        description = request.form["description"]
+        department = request.form["department"]
+
+        new_project = Projects(
+            name=name, date=date, description=description, department=department
+        )
+
+        try:
+            db.session.add(new_project)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return redirect(url_for("projects"))
+
+        return redirect(url_for("projects"))
+    return render_template(
+        "projects.html",
+        name=session["user_name"],
+        projects=projects,
+        employees=employees,
+        departments=departments,
+    )
+
+
+@app.route("/delete-project/<int:project_id>", methods=["POST"])
+def delete_project(project_id):
+    project = Projects.query.get_or_404(project_id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for("projects"))
 
 
 if __name__ == "__main__":

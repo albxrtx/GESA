@@ -1,3 +1,6 @@
+::placeholder {
+  color: light-dark(#adadad, #c8c8c8);
+}
 img {
   width: 600px;
   height: 600px;
@@ -23,7 +26,8 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid #dfedfa;
+  border-left: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   width: 35%;
   height: 100svh;
   gap: 10px;
@@ -48,6 +52,8 @@ a:hover {
   color: red;
 }
 .container_login form .container_inputs svg {
+  cursor: pointer;
+  fill: light-dark(#060606, #fefefe);
   transition: 0.2s ease;
   border-radius: 100%;
   padding: 0.4rem;
@@ -56,13 +62,15 @@ a:hover {
   top: 30px;
 }
 .container_login form .container_inputs svg:hover {
-  background-color: gainsboro;
+  background-color: light-dark(#f7f7f7, #282828);
 }
 .container_login form input {
   outline: none;
   border-radius: 0.5rem;
-  border: 1px solid gainsboro;
   padding: 10px 15px;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
+  background-color: light-dark(#f7f7f7, #3f3f3f);
 }
 .container_login form input[type="submit"] {
   font-size: 1.1rem;

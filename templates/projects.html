@@ -1,0 +1,145 @@
+{% extends "base.html" %} {% block title %}Proyectos{% endblock %}{% block
+content %} {% include "sidebar.html" %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename = 'style/projects.css')}}"
+/>
+<section>
+  <header>
+    <h1>Proyectos</h1>
+    <button id="btn_add_new_project">Crear proyecto</button>
+  </header>
+  <main>
+    <div class="container_projects">
+      {% for project in projects %}
+      <details name="project">
+        <summary>
+          <div>
+            <p>Nombre: {{ project.name }}</p>
+            <p>Fecha entrega: {{ project.date }}</p>
+            {% for department in departments %} {% if project.department ==
+            department.name %}
+            <span
+              style="color: {{department.color}}; background-color: {{department.color}}10;"
+              >{{project.department}}</span
+            >
+            {% endif %} {% endfor %}
+          </div>
+          <div>
+            <form
+              method="post"
+              action="{{ url_for('delete_project', project_id=project.id) }}"
+              class="delete_form"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                id="Capa_1"
+                x="0px"
+                y="0px"
+                viewBox="0 0 512 512"
+                style="enable-background: new 0 0 512 512"
+                xml:space="preserve"
+                width="14"
+                height="14"
+              >
+                <g>
+                  <path
+                    d="M490.667,96c0-17.673-14.327-32-32-32h-80.555C364.632,25.757,328.549,0.13,288,0h-64   c-40.549,0.13-76.632,25.757-90.112,64H53.333c-17.673,0-32,14.327-32,32l0,0c0,17.673,14.327,32,32,32H64v266.667   C64,459.468,116.532,512,181.333,512h149.333C395.468,512,448,459.468,448,394.667V128h10.667   C476.34,128,490.667,113.673,490.667,96z M384,394.667C384,424.122,360.122,448,330.667,448H181.333   C151.878,448,128,424.122,128,394.667V128h256V394.667z"
+                  />
+                  <path
+                    d="M202.667,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C170.667,369.673,184.994,384,202.667,384z"
+                  />
+                  <path
+                    d="M309.333,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C277.333,369.673,291.66,384,309.333,384z"
+                  />
+                </g>
+              </svg>
+              <button type="submit" id="btn_delete">Eliminar</button>
+            </form>
+            <button onclick="showDeleteForm(this)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Outline"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+              >
+                <circle cx="12" cy="2" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="12" cy="22" r="2" />
+              </svg>
+            </button>
+          </div>
+        </summary>
+
+        <div class="description_details">
+          <span>Descripcion:</span>
+          <p>{{project.description}}</p>
+        </div>
+        <div class="participants_details">
+          <span>Participantes:</span>
+          {% for department in departments %} {% for employer in employees %} {%
+          if department.name == project.department %} {% if project.department
+          == employer.department %}
+          <span>{{employer.name}}</span>
+          {% endif %} {% endif %} {% endfor %} {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </main>
+  <div class="add_new_project_form">
+    <form method="post" action="/add-project" class="form">
+      <h1>Añadir nuevo proyecto</h1>
+      <div>
+        <label for="">Nombre</label>
+        <input
+          type="text"
+          placeholder="Nombre del proyecto"
+          name="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Fecha entrega</label>
+        <input
+          type="date"
+          placeholder="Fecha de entrega"
+          name="date"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Descripción</label>
+        <input
+          type="text"
+          placeholder="Descripcion del proyecto"
+          name="description"
+          required
+        />
+      </div>
+      <div>
+        <label for="">Departamento</label>
+        <select name="department" id="" required>
+          <option value="" selected disabled hidden>Escoge una opción</option>
+          {% for department in departments %}
+          <option value="{{department.name}}">{{department.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="container_buttons">
+        <input
+          id="btn_add"
+          onclick="showToast()"
+          type="submit"
+          value="Añadir"
+        />
+        <input id="btn_cancel" type="reset" value="Cancelar" />
+      </div>
+    </form>
+  </div>
+</section>
+<script src="{{url_for('static', filename = 'js/projects.js')}}"></script>
+{% endblock %}
