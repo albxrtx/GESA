@@ -71,7 +71,7 @@ section header button:hover {
 }
 
 .table_component tr:nth-child(odd) td {
-  background-color: light-dark(#dbdbdb, #121212);
+  background-color: light-dark(#dbdbdb, #3b3b3b);
 }
 .table_component tr:nth-child(even) td {
   background-color: light-dark(#f7f7f7, #282828);
@@ -112,6 +112,8 @@ section header button:hover {
   gap: 10px;
 }
 .add_new_sale_form .form {
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 1fr);

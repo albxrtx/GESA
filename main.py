@@ -10,13 +10,21 @@ app = Flask(__name__, template_folder="templates")
 # Clave secreta
 app.secret_key = "clave_secreta"
 
-# Configuración de la base de datos
+from werkzeug.utils import secure_filename
+
+app.config["UPLOAD_FOLDER"] = "static/uploads"
+ALLOWED_EXTENSIONS = {"png", "jpg", "webp"}
+
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 
-# Creación de las tablas
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -141,6 +149,7 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    default_img = "img/default-user.webp"
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
@@ -155,6 +164,8 @@ def register():
             return "El correo ya está registrado."
 
         session["user_name"] = new_user.name
+        session["email"] = new_user.email
+        session["user_image"] = default_img
         return redirect(url_for("company"))
 
     return render_template("register.html")
@@ -316,9 +327,11 @@ def delete_sale(sale_id):
 def employees():
     departments = Departments.query.all()
     employees = Employees.query.all()
+    users = Users.query.all()
     return render_template(
         "employees.html",
         name=session["user_name"],
+        users=users,
         employees=employees,
         departments=departments,
     )
@@ -408,6 +421,46 @@ def delete_project(project_id):
     db.session.delete(project)
     db.session.commit()
     return redirect(url_for("projects"))
+
+
+@app.route("/account")
+def account():
+    users = Users.query.all()
+    return render_template(
+        "account.html", name=session["user_name"], email=session["email"], users=users
+    )
+
+
+@app.route("/modify-account", methods=["POST"])
+def modify_account():
+    if "user_name" not in session:
+        return redirect(url_for("login"))
+
+    user = Users.query.filter_by(email=session["email"]).first()
+    if not user:
+        return redirect(url_for("login"))
+
+    name = request.form.get("user_name")
+    email = request.form.get("user_email")
+    image = request.files.get("user_image")  # Obtener la imagen
+
+    if name:
+        user.name = name
+        session["user_name"] = name
+    if email:
+        user.email = email
+        session["email"] = email
+
+    if image and allowed_file(image.filename):
+        filename = secure_filename(image.filename)
+        image_path = f"uploads/{filename}"
+        image.save(f"static/{image_path}")
+
+        user.image = image_path
+        session["user_image"] = image_path
+
+    db.session.commit()
+    return redirect(url_for("account"))
 
 
 if __name__ == "__main__":

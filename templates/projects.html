@@ -83,7 +83,7 @@ content %} {% include "sidebar.html" %}
           {% for department in departments %} {% for employer in employees %} {%
           if department.name == project.department %} {% if project.department
           == employer.department %}
-          <span>{{employer.name}}</span>
+          <span class="employer_span">{{employer.name}}</span>
           {% endif %} {% endif %} {% endfor %} {% endfor %}
         </div>
       </details>

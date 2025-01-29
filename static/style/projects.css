@@ -118,7 +118,7 @@ main details div {
   gap: 1rem;
   padding: 0.5rem 0;
 }
-.participants_details span:nth-child(2) {
+.participants_details .employer_span {
   background-color: rgba(128, 128, 128, 0.205);
   color: gray;
   padding: 0.1rem 0.5rem;
@@ -144,6 +144,8 @@ main details div {
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   flex-direction: column;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   color: light-dark(#060606, #fefefe);
   background-color: light-dark(#f7f7f7, #282828);
   width: 50%;

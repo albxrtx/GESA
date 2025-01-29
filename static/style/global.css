@@ -38,9 +38,12 @@ body {
   width: 24px;
 }
 .details_account {
+  z-index: 100;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   visibility: hidden;
-  top: 480px;
-  left: 230px;
+  bottom: 1rem;
+  left: 255px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -54,6 +57,7 @@ body {
 }
 .details_account img {
   width: 40px;
+  height: 40px;
   border-radius: 100%;
 }
 .details_account span:nth-child(2) {

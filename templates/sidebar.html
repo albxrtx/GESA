@@ -103,21 +103,29 @@
   <div class="bottom">
     <p>Cuenta</p>
     <div id="container_account">
+      {% if session.user_image == "" %}
       <img
         style="width: 26px; height: 26px; border-radius: 100%"
         src="{{url_for('static', filename = 'img/default-user.webp')}}"
         alt=""
       />
+      {% else %}
+      <img
+        style="width: 26px; height: 26px; border-radius: 100%"
+        src="{{ url_for('static', filename=session['user_image']) }}"
+        alt=""
+      />
+      {% endif %}
       <span>{{ session.user_name }}</span>
     </div>
     <div class="details_account">
       <img
-        src="{{url_for('static', filename = 'img/default-user.webp')}}"
+        src="{{ url_for('static', filename=session['user_image']) }}"
         alt=""
       />
       <span>{{ session.user_name }}</span>
       <span>{{ session.email }}</span>
-      <a href="#">Gestionar cuenta</a>
+      <a href="{{ url_for('account') }}">Gestionar cuenta</a>
     </div>
     <a href="{{ url_for('logout') }}">
       <svg

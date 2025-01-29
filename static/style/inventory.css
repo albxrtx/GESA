@@ -69,7 +69,7 @@ section header button:hover {
   width: 5%;
 }
 .table_component tr:nth-child(odd) td {
-  background-color: light-dark(#dbdbdb, #121212);
+  background-color: light-dark(#dbdbdb, #3b3b3b);
 }
 .table_component tr:nth-child(even) td {
   background-color: light-dark(#f7f7f7, #282828);
@@ -115,6 +115,8 @@ section header button:hover {
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   flex-direction: column;
+  border: 1px solid;
+  border-color: light-dark(#dbdbdb, #3f3f3f);
   color: light-dark(#060606, #fefefe);
   background-color: light-dark(#f7f7f7, #282828);
   width: 50%;
