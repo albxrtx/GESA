@@ -7,7 +7,7 @@ content %} {% include "sidebar.html" %}
 <section>
   <header>
     <h1>Empleados</h1>
-    <button id="btn_add_new_employer">Añadir empleado</button>
+    <button id="btn_add_header">Añadir empleado</button>
   </header>
   <main>
     <div class="container_cards_employees">
@@ -65,7 +65,7 @@ content %} {% include "sidebar.html" %}
                 />
               </g>
             </svg>
-            <button type="submit" id="btn_delete">Eliminar</button>
+            <button type="submit" class="btn-delete">Eliminar</button>
           </form>
         </header>
         <main>
@@ -85,7 +85,7 @@ content %} {% include "sidebar.html" %}
       {% endfor %}
     </div>
   </main>
-  <div class="add_new_employer_form">
+  <div class="container_form">
     <form method="post" action="/add-employer" class="form">
       <h1>Añadir empleado</h1>
       <div>
@@ -132,5 +132,5 @@ content %} {% include "sidebar.html" %}
     </form>
   </div>
 </section>
-<script src="{{url_for('static', filename = 'js/employees.js')}}"></script>
+<script src="{{url_for('static', filename = 'js/global.js')}}"></script>
 {% endblock %}

@@ -442,7 +442,7 @@ def modify_account():
 
     name = request.form.get("user_name")
     email = request.form.get("user_email")
-    image = request.files.get("user_image")  # Obtener la imagen
+    image = request.files.get("user_image")
 
     if name:
         user.name = name

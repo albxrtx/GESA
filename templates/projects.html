@@ -7,7 +7,7 @@ content %} {% include "sidebar.html" %}
 <section>
   <header>
     <h1>Proyectos</h1>
-    <button id="btn_add_new_project">Crear proyecto</button>
+    <button id="btn_add_header">Crear proyecto</button>
   </header>
   <main>
     <div class="container_projects">
@@ -56,7 +56,7 @@ content %} {% include "sidebar.html" %}
                   />
                 </g>
               </svg>
-              <button type="submit" id="btn_delete">Eliminar</button>
+              <button type="submit" class="btn-delete">Eliminar</button>
             </form>
             <button onclick="showDeleteForm(this)">
               <svg
@@ -90,7 +90,7 @@ content %} {% include "sidebar.html" %}
       {% endfor %}
     </div>
   </main>
-  <div class="add_new_project_form">
+  <div class="container_form">
     <form method="post" action="/add-project" class="form">
       <h1>Añadir nuevo proyecto</h1>
       <div>
@@ -141,5 +141,5 @@ content %} {% include "sidebar.html" %}
     </form>
   </div>
 </section>
-<script src="{{url_for('static', filename = 'js/projects.js')}}"></script>
+<script src="{{url_for('static', filename = 'js/global.js')}}"></script>
 {% endblock %}

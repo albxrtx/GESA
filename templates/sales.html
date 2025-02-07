@@ -7,7 +7,7 @@
 <section>
   <header>
     <h1>Ventas</h1>
-    <button id="btn_add_new_sale">Añadir venta</button>
+    <button id="btn_add_header">Añadir venta</button>
   </header>
   <main>
     <div class="table_component">
@@ -68,7 +68,7 @@
       </table>
     </div>
   </main>
-  <div class="add_new_sale_form">
+  <div class="container_form">
     <form method="post" action="/add-sale" class="form">
       <h1>Añadir nuevo venta</h1>
       <div>
@@ -110,5 +110,5 @@
     </form>
   </div>
 </section>
-<script src="{{url_for('static', filename = 'js/sales.js')}}"></script>
+<script src="{{url_for('static', filename = 'js/global.js')}}"></script>
 {% endblock %}

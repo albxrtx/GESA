@@ -15,11 +15,9 @@ svgs.forEach((svg) => {
   });
 });
 
-
-
 passwordInput.addEventListener("input", () => {
-  let check = document.querySelector(".check_password")
-  
+  let check = document.querySelector(".check_password");
+
   if (passwordInput.value === confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid gray";
     passwordInput.style.border = "1px solid gray";
@@ -29,17 +27,16 @@ passwordInput.addEventListener("input", () => {
     passwordInput.style.border = "1px solid red";
     buttonSubmit.disabled = true;
   }
-  
-  if ( passwordInput.value.length < 8) {
-    check.textContent ="Carácteres mínimos: 8"
-    check.style.display = "flex"
-  }else{
-    check.style.display = "none"
+
+  if (passwordInput.value.length < 8) {
+    check.textContent = "Carácteres mínimos: 8";
+    check.style.display = "flex";
+  } else {
+    check.style.display = "none";
   }
 });
 
-confirmPasswordInput.addEventListener("input", (e) => {
-  e.preventDefault()
+confirmPasswordInput.addEventListener("input", () => {
   if (passwordInput.value === confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid gray";
     passwordInput.style.border = "1px solid gray";
@@ -49,8 +46,4 @@ confirmPasswordInput.addEventListener("input", (e) => {
     passwordInput.style.border = "1px solid red";
     buttonSubmit.disabled = true;
   }
-  
 });
-
-
-  

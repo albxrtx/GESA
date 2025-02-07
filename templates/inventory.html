@@ -7,7 +7,7 @@ content %} {% include "sidebar.html" %}
 <section>
   <header>
     <h1>Inventario</h1>
-    <button id="btn_add_new_product">Añadir producto</button>
+    <button id="btn_add_header">Añadir producto</button>
   </header>
   <main>
     <div class="table_component">
@@ -68,7 +68,7 @@ content %} {% include "sidebar.html" %}
       </table>
     </div>
   </main>
-  <div class="add_new_product_form">
+  <div class="container_form">
     <form method="post" action="/add-item" class="form">
       <h1>Añadir nuevo producto</h1>
       <div>
@@ -121,5 +121,5 @@ content %} {% include "sidebar.html" %}
     </form>
   </div>
 </section>
-<script src="{{url_for('static', filename = 'js/inventory.js')}}"></script>
+<script src="{{url_for('static', filename = 'js/global.js')}}"></script>
 {% endblock %}
